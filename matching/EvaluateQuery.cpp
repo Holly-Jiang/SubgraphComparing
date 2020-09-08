@@ -342,6 +342,11 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 #endif
 
             if (cur_depth == max_depth - 1) {
+                 cout<<"embedding:"<<embedding_cnt<<endl;
+                for (int i = 0; i < query_graph->getVerticesCount(); i++)
+                {
+                   cout<<i<<" : "<<embedding[i]<<endl;
+                }
                 embedding_cnt += 1;
                 visited_vertices[v] = false;
 
