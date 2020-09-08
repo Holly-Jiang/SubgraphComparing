@@ -18,7 +18,7 @@
  * If the memory can hold the extra memory cost, then enable this feature to boost the performance. Otherwise, disable
  * it by setting this value as 0.
  */
-#define OPTIMIZED_LABELED_GRAPH 1
+#define OPTIMIZED_LABELED_GRAPH 0
 
 /**
  * Define SPECTRUM to enable spectrum analysis.
@@ -40,20 +40,20 @@
 /**
  * Define ENABLE_QFLITER to enable QFliter set intersection method.
  */
-// #define ENABLE_QFLITER 1
+ #define ENABLE_QFLITER 1
 
 /**
  * Define ENABLE_FAILING_SET to enable the failing set pruning set intersection method.
  */
-// #define ENABLE_FAILING_SET
+ #define ENABLE_FAILING_SET
 
 /**
  * Enable collection the distribution of the results in the data graph.
  */
 
-// #define DISTRIBUTION
+ #define DISTRIBUTION
 
 
 #define PRINT_SEPARATOR "------------------------------"
 
-#endif //SUBGRAPHMATCHING_CONFIG_H
+#endif SUBGRAPHMATCHING_CONFIG_H
