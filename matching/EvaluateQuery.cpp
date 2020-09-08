@@ -345,7 +345,13 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
             idx[cur_depth] += 1;
 #ifdef DISTRIBUTION
             begin_count[cur_depth] = embedding_cnt;
-             printf("Cur Depth: %d, v: %u, begin: %zu\n", cur_depth, v, embedding_cnt);
+             printf("Cur Depth: %d, v: %u, begin: %zu\n", cur_depth, v, embedding_cnt); 
+            cout<<u<<"---------bb----------"<<v<<endl;
+            for (int i = 0; i < query_graph->getVerticesCount(); i++)
+                {
+                   cout<<i<<" : "<<embedding[i]<<endl;
+                }
+            cout<<"---------bb----------"<<endl;
 #endif
 
 #ifdef ENABLE_FAILING_SET
