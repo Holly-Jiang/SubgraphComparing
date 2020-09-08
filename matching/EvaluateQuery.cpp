@@ -6,6 +6,7 @@
 #include "utility/computesetintersection.h"
 #include <vector>
 #include <cstring>
+#include <fstream>
 
 #include "utility/pretty_print.h"
 
@@ -266,7 +267,8 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
                     ui *candidates_count,
                     ui *order, size_t output_limit_num, size_t &call_count) {
     
-	ofstream of("test\\result\\res.res");
+	ofstream of("res.res");
+
     if (!of.is_open())
     {
         cout<<"111111111111111111: "<<of.is_open()<<endl;
@@ -275,7 +277,6 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
     }else{
         cout<<"000000000000000: "<<of.is_open()<<endl;
         of<<"00000000000000000000"<<endl;
-        of.flush();
     }
           
 #ifdef DISTRIBUTION
@@ -370,7 +371,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 #endif
 
             if (cur_depth == max_depth - 1) {
-                of<<"t "<<endl; 
+                of<<"t 1"<<endl; 
             for (int i = 0; i < query_graph->getVerticesCount(); i++)
                 {
                    of<<i<<" : "<<embedding[i]<<endl;
@@ -473,7 +474,6 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
     }
     delete[] qfliter_bsr_graph_;
 #endif
-    of.flush();
     of.close();
     return embedding_cnt;
 }
