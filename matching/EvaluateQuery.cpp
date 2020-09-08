@@ -187,7 +187,9 @@ EvaluateQuery::allocateBuffer(const Graph *data_graph, const Graph *query_graph,
     valid_candidate_idx = new ui *[query_vertices_num];
     for (ui i = 0; i < query_vertices_num; ++i) {
         valid_candidate_idx[i] = new ui[max_candidates_num];
+        embedding[i] = 99999;
     }
+    
 
     std::fill(visited_vertices, visited_vertices + data_vertices_num, false);
 }
@@ -331,10 +333,12 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
             idx_embedding[u] = valid_idx;
             visited_vertices[v] = true;
             idx[cur_depth] += 1;
+            cout<<"-------------------"<<endl;
             for (int i = 0; i < query_graph->getVerticesCount(); i++)
                 {
                    cout<<i<<" : "<<embedding[i]<<endl;
                 }
+            cout<<"-------------------"<<endl;
 #ifdef DISTRIBUTION
             begin_count[cur_depth] = embedding_cnt;
             // printf("Cur Depth: %d, v: %u, begin: %zu\n", cur_depth, v, embedding_cnt);
