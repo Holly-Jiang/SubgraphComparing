@@ -124,6 +124,11 @@ EvaluateQuery::exploreGraph(const Graph *data_graph, const Graph *query_graph, E
             idx[cur_depth] += 1;
 
             if (cur_depth == max_depth - 1) {
+                cout<<"embedding_cnt:"<<embedding_cnt<<endl;
+                for (int i = 0; i < max_depth; i++)
+                {
+                    cout<<i<<" : "<<embedding[i]<<endl;
+                }
                 embedding_cnt += 1;
                 visited_vertices[v] = false;
                 if (embedding_cnt >= output_limit_num) {
