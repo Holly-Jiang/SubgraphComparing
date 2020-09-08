@@ -345,7 +345,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
             idx[cur_depth] += 1;
 #ifdef DISTRIBUTION
             begin_count[cur_depth] = embedding_cnt;
-            printf("Cur Depth: %d, v: %u, begin: %zu\n", cur_depth, v, embedding_cnt); 
+            //printf("Cur Depth: %d, v: %u, begin: %zu\n", cur_depth, v, embedding_cnt); 
             cout<<u<<"---------bb----------"<<v<<endl;
             for (int i = 0; i < query_graph->getVerticesCount(); i++)
                 {
@@ -359,12 +359,12 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 #endif
 
             if (cur_depth == max_depth - 1) {
-                //  cout<<"---embedding:-----------------"<<embedding_cnt<<endl;
-                // for (int i = 0; i < query_graph->getVerticesCount(); i++)
-                // {
-                //    cout<<i<<" : "<<embedding[i]<<endl;
-                // }
-                //  cout<<"---end-----------------"<<embedding_cnt<<endl;
+                 cout<<"---embedding:-----------------"<<embedding_cnt<<endl;
+                for (int i = 0; i < query_graph->getVerticesCount(); i++)
+                {
+                   cout<<i<<" : "<<embedding[i]<<endl;
+                }
+                 cout<<"---end-----------------"<<embedding_cnt<<endl;
                 embedding_cnt += 1;
                 visited_vertices[v] = false;
                 embedding[u] = 99999;
@@ -426,7 +426,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 
 #ifdef DISTRIBUTION
             distribution_count_[embedding[u]] += embedding_cnt - begin_count[cur_depth];
-            printf("Cur Depth: %d, v: %u, begin: %zu, end: %zu\n", cur_depth, embedding[u], begin_count[cur_depth], embedding_cnt);
+           // printf("Cur Depth: %d, v: %u, begin: %zu, end: %zu\n", cur_depth, embedding[u], begin_count[cur_depth], embedding_cnt);
 #endif
             embedding[u]=99999;
         }
