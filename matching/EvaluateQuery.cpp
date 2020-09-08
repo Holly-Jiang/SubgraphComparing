@@ -313,6 +313,10 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
     exit_ = false;
 #endif
 
+            for (int i = 0; i < query_graph->getVerticesCount(); i++)
+                {
+                   cout<<i<<" : "<<embedding[i]<<endl;
+                }
     while (true) {
         while (idx[cur_depth] < idx_count[cur_depth]) {
             ui valid_idx = valid_candidate_idx[cur_depth][idx[cur_depth]];
@@ -329,12 +333,12 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
                 continue;
             }
 
-            cout<<u<<"---------bb----------"<<v<<endl;
-            for (int i = 0; i < query_graph->getVerticesCount(); i++)
-                {
-                   cout<<i<<" : "<<embedding[i]<<endl;
-                }
-            cout<<"---------bb----------"<<endl;
+            // cout<<u<<"---------bb----------"<<v<<endl;
+            // for (int i = 0; i < query_graph->getVerticesCount(); i++)
+            //     {
+            //        cout<<i<<" : "<<embedding[i]<<endl;
+            //     }
+            // cout<<"---------bb----------"<<endl;
             embedding[u] = v;
             idx_embedding[u] = valid_idx;
             visited_vertices[v] = true;
@@ -349,12 +353,12 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 #endif
 
             if (cur_depth == max_depth - 1) {
-                 cout<<"---embedding:-----------------"<<embedding_cnt<<endl;
-                for (int i = 0; i < query_graph->getVerticesCount(); i++)
-                {
-                   cout<<i<<" : "<<embedding[i]<<endl;
-                }
-                 cout<<"---end-----------------"<<embedding_cnt<<endl;
+                //  cout<<"---embedding:-----------------"<<embedding_cnt<<endl;
+                // for (int i = 0; i < query_graph->getVerticesCount(); i++)
+                // {
+                //    cout<<i<<" : "<<embedding[i]<<endl;
+                // }
+                //  cout<<"---end-----------------"<<embedding_cnt<<endl;
                 embedding_cnt += 1;
                 visited_vertices[v] = false;
 
