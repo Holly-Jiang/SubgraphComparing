@@ -474,7 +474,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
     }
     delete[] qfliter_bsr_graph_;
 #endif
-    of.close();
+    out.close();
     return embedding_cnt;
 }
 
