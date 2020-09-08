@@ -274,6 +274,8 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
         exit(-1);
     }else{
         cout<<"000000000000000: "<<of.is_open()<<endl;
+        of<<"00000000000000000000"<<endl;
+        of.flush();
     }
           
 #ifdef DISTRIBUTION
