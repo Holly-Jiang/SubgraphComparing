@@ -266,7 +266,12 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
                     ui *candidates_count,
                     ui *order, size_t output_limit_num, size_t &call_count) {
     
-	ofstream of("test\\result\\res.res");      
+	ofstream of("test\\result\\res.res");
+    if (!of.is_open())
+    {
+        cout<<"file open fails!"
+    }
+          
 #ifdef DISTRIBUTION
     distribution_count_ = new size_t[data_graph->getVerticesCount()];
     memset(distribution_count_, 0, data_graph->getVerticesCount() * sizeof(size_t));
