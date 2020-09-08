@@ -423,6 +423,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 #endif
             visited_vertices[embedding[u]] = false;
             embedding[u]=99999;
+            cout<<"embedding[u]=99999: "<<embedding[u]<<endl;
 
 #ifdef DISTRIBUTION
             distribution_count_[embedding[u]] += embedding_cnt - begin_count[cur_depth];
