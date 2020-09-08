@@ -269,8 +269,11 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 	ofstream of("test\\result\\res.res");
     if (!of.is_open())
     {
+        of<<"111111111111111111: "<<of.is_open()<<endl;
         cout<<"file open fails!"<<endl;
         exit(-1);
+    }else{
+        of<<"000000000000000"<<endl;
     }
           
 #ifdef DISTRIBUTION
