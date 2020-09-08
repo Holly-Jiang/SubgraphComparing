@@ -269,7 +269,8 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 	ofstream of("test\\result\\res.res");
     if (!of.is_open())
     {
-        cout<<"file open fails!"
+        cout<<"file open fails!"<<endl;
+        exit(-1);
     }
           
 #ifdef DISTRIBUTION
@@ -426,7 +427,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
             }
 #endif
             visited_vertices[embedding[u]] = false;
-            cout<<"embedding[u]=99999: "<<embedding[u]<<endl;
+            // cout<<"embedding[u]=99999: "<<embedding[u]<<endl;
 
 #ifdef DISTRIBUTION
             distribution_count_[embedding[u]] += embedding_cnt - begin_count[cur_depth];
