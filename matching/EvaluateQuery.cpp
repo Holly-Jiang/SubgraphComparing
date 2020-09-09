@@ -277,7 +277,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
     }else{
         cout<<"000000000000000: "<<out.is_open()<<endl;
         out<<"00000000000000000000"<<endl;
-        out.write("34454545454545454545454554544");
+        out.write("34454545454545454545454554544",sizeof("34454545454545454545454554544"));
     }
           
 #ifdef DISTRIBUTION
@@ -461,6 +461,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 #endif
 
     EXIT:
+    out.close();
     releaseBuffer(max_depth, idx, idx_count, embedding, idx_embedding, temp_buffer, valid_candidate_idx,
                   visited_vertices,
                   bn, bn_count);

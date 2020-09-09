@@ -82,7 +82,7 @@ private:
                                    ui *&idx_count, ui *&embedding, ui *&idx_embedding, ui *&temp_buffer,
                                    ui **&valid_candidate_idx, bool *&visited_vertices);
     static void releaseBuffer(ui query_vertices_num, ui *idx, ui *idx_count, ui *embedding, ui *idx_embedding,
-                                  ui *temp_buffer, ui **valid_candidate_idx, bool *visited_vertices, ui **bn, ui *bn_count);
+                                  ui *temp_buffer, ui **valid_candidate_idx, bool *visited_vertices, ui **bn, ui *bn_count,ofstream out);
 
     static void generateValidCandidateIndex(const Graph *data_graph, ui depth, ui *embedding, ui *idx_embedding,
                                             ui *idx_count, ui **valid_candidate_index, Edges ***edge_matrix,
