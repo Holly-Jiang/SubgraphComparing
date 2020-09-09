@@ -1,0 +1,7 @@
+/root/graph/new/SubgraphComparing/build/utility/CMakeFiles/utility.dir
+/root/graph/new/SubgraphComparing/build/matching/CMakeFiles/SelectEdge.dir
+/root/graph/new/SubgraphComparing/build/matching/CMakeFiles/ReassignLabel.dir
+/root/graph/new/SubgraphComparing/build/matching/CMakeFiles/EdgeListConverter.out.dir
+/root/graph/new/SubgraphComparing/build/matching/CMakeFiles/SubgraphMatching.out.dir
+/root/graph/new/SubgraphComparing/build/matching/CMakeFiles/GraphConverter.out.dir
+/root/graph/new/SubgraphComparing/build/graph/CMakeFiles/graph.dir
