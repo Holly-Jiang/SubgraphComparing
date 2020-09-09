@@ -267,7 +267,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
                     ui *candidates_count,
                     ui *order, size_t output_limit_num, size_t &call_count) {
     
-	std::ofstream out("res.dat",std::ios::app| std::ios::out|std::ios::in);
+	std::ofstream out("res.dat");
 
     if (!out.is_open())
     {
@@ -276,8 +276,6 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
         exit(-1);
     }else{
         cout<<"000000000000000: "<<out.is_open()<<endl;
-        out<<"00000000000000000000"<<endl;
-        out.write("34454545454545454545454554544",sizeof("34454545454545454545454554544"));
     }
           
 #ifdef DISTRIBUTION
