@@ -267,7 +267,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
                     ui *candidates_count,
                     ui *order, size_t output_limit_num, size_t &call_count) {
     
-	std::ofstream out("test/res",std::ios::app| std::ios::out|std::ios::in);
+	std::ofstream out("test/result/res.res",std::ios::app| std::ios::out|std::ios::in);
 
     if (!out.is_open())
     {
