@@ -459,6 +459,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 
     EXIT:
     out.close();
+    out1.close();
     releaseBuffer(max_depth, idx, idx_count, embedding, idx_embedding, temp_buffer, valid_candidate_idx,
                   visited_vertices,
                   bn, bn_count);
@@ -478,6 +479,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
     delete[] qfliter_bsr_graph_;
 #endif
     out.close();
+    out1.close();
     return embedding_cnt;
 }
 
