@@ -463,8 +463,6 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 #endif
 
     EXIT:
-    out.close();
-    out1.close();
     releaseBuffer(max_depth, idx, idx_count, embedding, idx_embedding, temp_buffer, valid_candidate_idx,
                   visited_vertices,
                   bn, bn_count);
