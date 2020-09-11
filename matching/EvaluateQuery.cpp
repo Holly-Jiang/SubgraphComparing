@@ -298,7 +298,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 
     idx[cur_depth] = 0;
     idx_count[cur_depth] = candidates_count[start_vertex];
-        std::ofstream out("res.dat");  
+        std::ofstream out("res.:");  
         std::ofstream out1("result.dat");
         if (!out1.is_open())
             {
