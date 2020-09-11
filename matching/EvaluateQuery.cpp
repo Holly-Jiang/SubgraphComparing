@@ -267,15 +267,6 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
                     ui *candidates_count,
                     ui *order, size_t output_limit_num, size_t &call_count) {
     
-	std::ofstream out("res.dat");
-	std::ofstream out1("result.dat");
-
-    if (!out.is_open()||!out1.is_open())
-    {
-        cout<<"111111111111111111: "<<out.is_open()<<endl;
-        cout<<"file open fails!: "<<out1.is_open()<<endl;
-        exit(-1);
-    }
           
 #ifdef DISTRIBUTION
     distribution_count_ = new size_t[data_graph->getVerticesCount()];
@@ -357,6 +348,12 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 #ifdef DISTRIBUTION
             begin_count[cur_depth] = embedding_cnt;
             //printf("Cur Depth: %d, v: %u, begin: %zu\n", cur_depth, v, embedding_cnt); 
+            std::ofstream out("res.dat");
+             if (!out.is_open())
+            {
+                cout<<"file open fails!: "<<out.is_open()<<endl;
+                exit(-1);
+            }
 	        out<<"t "<<endl; 
             cout<<"t "<<endl; 
             for (int i = 0; i < query_graph->getVerticesCount(); i++)
@@ -364,6 +361,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
                    out<<i<<" : "<<embedding[i]<<endl;
                    cout<<i<<" : "<<embedding[i]<<endl;
                 }
+            out.close();
 #endif
 
 #ifdef ENABLE_FAILING_SET
@@ -371,6 +369,12 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 #endif
 
             if (cur_depth == max_depth - 1) {
+	        std::ofstream out1("result.dat");
+             if (!out1.is_open())
+            {
+                cout<<"file open fails!: "<<out1.is_open()<<endl;
+                exit(-1);
+            }
                 out1<<"t "<<endl; 
                 cout<<"t 1"<<endl; 
             for (int i = 0; i < query_graph->getVerticesCount(); i++)
@@ -378,6 +382,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
                    out1<<i<<" : "<<embedding[i]<<endl;
                    cout<<i<<" : "<<embedding[i]<<endl;
                 }
+                out1.close();
                 embedding_cnt += 1;
                 visited_vertices[v] = false;
                 embedding[u] = 99999;
