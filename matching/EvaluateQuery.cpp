@@ -298,7 +298,18 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 
     idx[cur_depth] = 0;
     idx_count[cur_depth] = candidates_count[start_vertex];
-
+        std::ofstream out("res.dat");  
+        std::ofstream out1("result.dat");
+        if (!out1.is_open())
+            {
+                cout<<"file open fails!: "<<out1.is_open()<<endl;
+                exit(-1);
+            }
+        if (!out.is_open())
+            {
+                cout<<"file open fails!: "<<out.is_open()<<endl;
+                exit(-1);
+            }
     for (ui i = 0; i < idx_count[cur_depth]; ++i) {
         valid_candidate_idx[cur_depth][i] = i;
     }
@@ -348,12 +359,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 #ifdef DISTRIBUTION
             begin_count[cur_depth] = embedding_cnt;
             //printf("Cur Depth: %d, v: %u, begin: %zu\n", cur_depth, v, embedding_cnt); 
-            std::ofstream out("res.dat");
-             if (!out.is_open())
-            {
-                cout<<"file open fails!: "<<out.is_open()<<endl;
-                exit(-1);
-            }
+          
 	        out<<"t "<<endl; 
             cout<<"t "<<endl; 
             for (int i = 0; i < query_graph->getVerticesCount(); i++)
@@ -361,7 +367,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
                    out<<i<<" : "<<embedding[i]<<endl;
                    cout<<i<<" : "<<embedding[i]<<endl;
                 }
-            out.close();
+                out.flush();
 #endif
 
 #ifdef ENABLE_FAILING_SET
@@ -369,12 +375,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 #endif
 
             if (cur_depth == max_depth - 1) {
-	        std::ofstream out1("result.dat");
-             if (!out1.is_open())
-            {
-                cout<<"file open fails!: "<<out1.is_open()<<endl;
-                exit(-1);
-            }
+	    
                 out1<<"t "<<endl; 
                 cout<<"t 1"<<endl; 
             for (int i = 0; i < query_graph->getVerticesCount(); i++)
@@ -382,7 +383,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
                    out1<<i<<" : "<<embedding[i]<<endl;
                    cout<<i<<" : "<<embedding[i]<<endl;
                 }
-                out1.close();
+                out1.flush();
                 embedding_cnt += 1;
                 visited_vertices[v] = false;
                 embedding[u] = 99999;
@@ -463,6 +464,8 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 #endif
 
     EXIT:
+    out.close();
+    out1.close();
     releaseBuffer(max_depth, idx, idx_count, embedding, idx_embedding, temp_buffer, valid_candidate_idx,
                   visited_vertices,
                   bn, bn_count);
@@ -481,6 +484,8 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
     }
     delete[] qfliter_bsr_graph_;
 #endif
+    out.close();
+    out1.close();
     return embedding_cnt;
 }
 
