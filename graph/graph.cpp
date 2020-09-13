@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <chrono>
 #include <utility/graphoperations.h>
+using namespace std;
 
 void Graph::BuildReverseIndex() {
     reverse_index_ = new ui[vertices_count_];
@@ -142,7 +143,7 @@ void Graph::loadGraphFromFile(const std::string &file_path) {
             neighbors_offset[end] += 1;
         }
     }
-    cout<<"load ve"<<endl;
+    std::cout<<"load ve"<<std::endl;
 
     infile.close();
     labels_count_ = (ui)labels_frequency_.size() > (max_label_id + 1) ? (ui)labels_frequency_.size() : max_label_id + 1;
@@ -153,12 +154,12 @@ void Graph::loadGraphFromFile(const std::string &file_path) {
         }
     }
 
-    cout<<"labels_frequency_ "<<labels_count_<<endl;
+    std::cout<<"labels_frequency_ "<<labels_count_<<std::endl;
     for (ui i = 0; i < vertices_count_; ++i) {
         std::sort(neighbors_ + offsets_[i], neighbors_ + offsets_[i + 1]);
     }
 
-    cout<<"BuildReverseIndex "<<endl;
+    std::cout<<"BuildReverseIndex "<<std::endl;
     BuildReverseIndex();
 
 #if OPTIMIZED_LABELED_GRAPH == 1
