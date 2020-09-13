@@ -2,6 +2,7 @@
 // Created by ssunah on 6/22/18.
 //
 
+#include <iostream>
 #include "graph.h"
 #include <fstream>
 #include <vector>
@@ -141,6 +142,7 @@ void Graph::loadGraphFromFile(const std::string &file_path) {
             neighbors_offset[end] += 1;
         }
     }
+    cout<<"load ve"<<endl;
 
     infile.close();
     labels_count_ = (ui)labels_frequency_.size() > (max_label_id + 1) ? (ui)labels_frequency_.size() : max_label_id + 1;
@@ -151,10 +153,12 @@ void Graph::loadGraphFromFile(const std::string &file_path) {
         }
     }
 
+    cout<<"labels_frequency_ "<<labels_count_<<endl;
     for (ui i = 0; i < vertices_count_; ++i) {
         std::sort(neighbors_ + offsets_[i], neighbors_ + offsets_[i + 1]);
     }
 
+    cout<<"BuildReverseIndex "<<endl;
     BuildReverseIndex();
 
 #if OPTIMIZED_LABELED_GRAPH == 1
