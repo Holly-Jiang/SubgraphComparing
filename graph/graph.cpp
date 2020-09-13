@@ -25,10 +25,10 @@ void Graph::BuildReverseIndex() {
         cout<<"total :"<<total<<endl;
     for (ui i = 0; i < vertices_count_; ++i) {
         LabelID label = labels_[i];
-        cout<<"reverse_index_offsets_[label + 1]+1 :"<<reverse_index_offsets_[label + 1]+1<<endl;
         cout<<"reverse_index_offsets_[label + 1] :"<<reverse_index_offsets_[label + 1]<<endl;
+        cout<<"reverse_index_offsets_[label + 1]+1 :"<<reverse_index_offsets_[label + 1]+1<<endl;
         reverse_index_[reverse_index_offsets_[label + 1]++] = i;
-        cout<<" reverse_index_[reverse_index_offsets_[label + 1]++] :"<<reverse_index_[reverse_index_offsets_[label + 1]+1]<<endl;
+        cout<<" reverse_index_[reverse_index_offsets_[label + 1]++] :"<<reverse_index_[reverse_index_offsets_[label + 1]]<<endl;
     }
 }
 
