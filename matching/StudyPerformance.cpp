@@ -119,12 +119,14 @@ int main(int argc, char** argv) {
 
     if (input_csr_file_path.empty()) {
         data_graph->loadGraphFromFile(input_data_graph_file);
+        cout<<input_csr_file_path<<" loadGraphFromFile "<<endl;
     }
     else {
         std::string degree_file_path = input_csr_file_path + "_deg.bin";
         std::string edge_file_path = input_csr_file_path + "_adj.bin";
         std::string label_file_path = input_csr_file_path + "_label.bin";
         data_graph->loadGraphFromFileCompressed(degree_file_path, edge_file_path, label_file_path);
+        cout<<degree_file_path<<" loadGraphFromFileCompressed "<<endl;
     }
 
     auto end = std::chrono::high_resolution_clock::now();

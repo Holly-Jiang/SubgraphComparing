@@ -325,11 +325,6 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 #ifdef SPECTRUM
     exit_ = false;
 #endif
-
-            for (int i = 0; i < query_graph->getVerticesCount(); i++)
-                {
-                   cout<<i<<" : "<<embedding[i]<<endl;
-                }
     while (true) {
         while (idx[cur_depth] < idx_count[cur_depth]) {
             ui valid_idx = valid_candidate_idx[cur_depth][idx[cur_depth]];
@@ -360,11 +355,9 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
             begin_count[cur_depth] = embedding_cnt;
             //printf("Cur Depth: %d, v: %u, begin: %zu\n", cur_depth, v, embedding_cnt); 
 	        out<<"t "<<endl; 
-            cout<<"t "<<endl; 
             for (int i = 0; i < query_graph->getVerticesCount(); i++)
                 {
                    out<<i<<" : "<<embedding[i]<<endl;
-                   cout<<i<<" : "<<embedding[i]<<endl;
                 }
             out.flush();
 #endif
@@ -376,11 +369,9 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
             if (cur_depth == max_depth - 1) {
 	    
                 out1<<"t 1"<<endl; 
-                cout<<"t 1"<<endl; 
             for (int i = 0; i < query_graph->getVerticesCount(); i++)
                 {
                    out1<<i<<" : "<<embedding[i]<<endl;
-                   cout<<i<<" : "<<embedding[i]<<endl;
                 }
                 out1.flush();
                 embedding_cnt += 1;
