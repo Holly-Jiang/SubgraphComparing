@@ -265,7 +265,7 @@ void EvaluateQuery::releaseBuffer(ui query_vertices_num, ui *idx, ui *idx_count,
 size_t
 EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***edge_matrix, ui **candidates,
                     ui *candidates_count,
-                    ui *order, size_t output_limit_num, size_t &call_count) {
+                    ui *order, size_t output_limit_num, size_t &call_count,string filename) {
     
           
 #ifdef DISTRIBUTION
@@ -298,8 +298,13 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 
     idx[cur_depth] = 0;
     idx_count[cur_depth] = candidates_count[start_vertex];
-        std::ofstream out("/root/graph/new/SubgraphComparing/build/matching/res.dat");  
-        std::ofstream out1("/root/graph/new/SubgraphComparing/build/matching/result.dat");
+    string out_path;
+    out_path.append("/root/graph/new/quantum_mapping_a_-/pre_ini/");
+    out_path.append(filename.substr(filename.find_last_of("/")+1));
+    cout<<out_path<<endl;
+    std::ofstream out(out_path);  
+    std::ofstream out1("/root/graph/new/SubgraphComparing/build/matching/result.dat");
+
         if (!out1.is_open())
             {
                 cout<<"file open fails!: "<<out1.is_open()<<endl;
@@ -341,12 +346,6 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
                 continue;
             }
 
-            // cout<<u<<"---------bb----------"<<v<<endl;
-            // for (int i = 0; i < query_graph->getVerticesCount(); i++)
-            //     {
-            //        cout<<i<<" : "<<embedding[i]<<endl;
-            //     }
-            // cout<<"---------bb----------"<<endl;
             embedding[u] = v;
             idx_embedding[u] = valid_idx;
             visited_vertices[v] = true;

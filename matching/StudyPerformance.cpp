@@ -19,7 +19,7 @@
 #define BYTESTOMB(memory_cost) ((memory_cost)/(double)(1024 * 1024))
 
 size_t enumerate(Graph* data_graph, Graph* query_graph, Edges*** edge_matrix, ui** candidates, ui* candidates_count,
-                ui* matching_order, size_t output_limit) {
+                ui* matching_order, size_t output_limit,string input_query_graph_file) {
     static ui order_id = 0;
 
     order_id += 1;
@@ -27,7 +27,7 @@ size_t enumerate(Graph* data_graph, Graph* query_graph, Edges*** edge_matrix, ui
     auto start = std::chrono::high_resolution_clock::now();
     size_t call_count = 0;
     size_t embedding_count = EvaluateQuery::LFTJ(data_graph, query_graph, edge_matrix, candidates, candidates_count,
-                               matching_order, output_limit, call_count);
+                               matching_order, output_limit, call_count,input_query_graph_file);
 
     auto end = std::chrono::high_resolution_clock::now();
     double enumeration_time_in_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
@@ -48,7 +48,7 @@ size_t enumerate(Graph* data_graph, Graph* query_graph, Edges*** edge_matrix, ui
 }
 
 void spectrum_analysis(Graph* data_graph, Graph* query_graph, Edges*** edge_matrix, ui** candidates, ui* candidates_count,
-                       size_t output_limit, std::vector<std::vector<ui>>& spectrum, size_t time_limit_in_sec) {
+                       size_t output_limit, std::vector<std::vector<ui>>& spectrum, size_t time_limit_in_sec,string input_query_graph_file) {
 
     for (auto& order : spectrum) {
         std::cout << "----------------------------" << std::endl;
@@ -57,7 +57,7 @@ void spectrum_analysis(Graph* data_graph, Graph* query_graph, Edges*** edge_matr
 
         std::future<size_t> future = std::async(std::launch::async, [data_graph, query_graph, edge_matrix, candidates, candidates_count,
                                                                      matching_order, output_limit](){
-            return enumerate(data_graph, query_graph, edge_matrix, candidates, candidates_count, matching_order, output_limit);
+            return enumerate(data_graph, query_graph, edge_matrix, candidates, candidates_count, matching_order, output_limit,input_query_graph_file);
         });
 
         std::cout << "execute...\n";
@@ -316,7 +316,7 @@ int main(int argc, char** argv) {
                                                       candidates_count, matching_order, pivots, output_limit, call_count);
     } else if (input_engine_type == "LFTJ") {
         embedding_count = EvaluateQuery::LFTJ(data_graph, query_graph, edge_matrix, candidates, candidates_count,
-                                              matching_order, output_limit, call_count);
+                                              matching_order, output_limit, call_count,input_query_graph_file);
     } else if (input_engine_type == "GQL") {
         embedding_count = EvaluateQuery::exploreGraphQLStyle(data_graph, query_graph, candidates, candidates_count,
                                                              matching_order, output_limit, call_count);
@@ -335,7 +335,7 @@ int main(int argc, char** argv) {
 //                                                           call_count);
     }
     else if (input_engine_type == "Spectrum") {
-        spectrum_analysis(data_graph, query_graph, edge_matrix, candidates, candidates_count, output_limit, spectrum, time_limit);
+        spectrum_analysis(data_graph, query_graph, edge_matrix, candidates, candidates_count, output_limit, spectrum, time_limit,input_query_graph_file);
     }
     else if (input_engine_type == "CECI") {
         embedding_count = EvaluateQuery::exploreCECIStyle(data_graph, query_graph, ceci_tree, candidates, candidates_count, TE_Candidates,
