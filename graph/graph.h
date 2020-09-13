@@ -10,7 +10,7 @@
 
 #include "configuration/types.h"
 #include "configuration/config.h"
-
+using namespace  std;
 /**
  * A graph is stored as the CSR format.
  */
