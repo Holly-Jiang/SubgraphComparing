@@ -110,15 +110,15 @@ int main(int argc, char** argv) {
     std::cout << "Load graphs..." << std::endl;
 
     auto start = std::chrono::high_resolution_clock::now();
-
-    Graph* query_graph = new Graph(true);
+    //标签匹配 true 
+    Graph* query_graph = new Graph(false);
         cout<<input_query_graph_file<<" loadGraphFromFile query_graph before "<<endl;
     query_graph->loadGraphFromFile(input_query_graph_file);
         cout<<input_query_graph_file<<" loadGraphFromFile query_graph after "<<endl;
     query_graph->buildCoreTable();
         cout<<input_query_graph_file<<"buildCoreTable "<<endl;
 
-    Graph* data_graph = new Graph(true);
+    Graph* data_graph = new Graph(false);
 
     if (input_csr_file_path.empty()) {
         cout<<input_csr_file_path<<" loadGraphFromFile "<<endl;
