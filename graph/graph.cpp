@@ -100,8 +100,6 @@ void Graph::loadGraphFromFile(const std::string &file_path) {
 
     neighbors_ = new VertexID[edges_count_ * 2];
     labels_ = new LabelID[vertices_count_];
-    cout<<"neighbors_ :"<<neighbors_<<" labels_ : "<<labels_<<endl;
-    cout<<"offsets_ :"<<offsets_<<endl;
     labels_count_ = 0;
     max_degree_ = 0;
 
@@ -145,7 +143,6 @@ void Graph::loadGraphFromFile(const std::string &file_path) {
             neighbors_offset[end] += 1;
         }
     }
-    std::cout<<"load ve"<<std::endl;
 
     infile.close();
     labels_count_ = (ui)labels_frequency_.size() > (max_label_id + 1) ? (ui)labels_frequency_.size() : max_label_id + 1;
@@ -155,8 +152,6 @@ void Graph::loadGraphFromFile(const std::string &file_path) {
             max_label_frequency_ = element.second;
         }
     }
-
-    std::cout<<"labels_frequency_ "<<labels_count_<<std::endl;
     for (ui i = 0; i < vertices_count_; ++i) {
         std::sort(neighbors_ + offsets_[i], neighbors_ + offsets_[i + 1]);
     }
@@ -165,18 +160,13 @@ void Graph::loadGraphFromFile(const std::string &file_path) {
         labels_[i]=0;
         cout<<labels_[i]<<endl;
     }
-    std::cout<<"BuildReverseIndex "<<std::endl;
     BuildReverseIndex();
-    std::cout<<"BuildReverseIndex  after"<<std::endl;
-
 #if OPTIMIZED_LABELED_GRAPH == 1
     if (enable_label_offset_) {
-    std::cout<<"enable_label_offset_ "<<enable_label_offset_<<std::endl;
         BuildNLF();
         // BuildLabelOffset();
     }
 #endif
-    std::cout<<"load file  after"<<std::endl;
 }
 
 void Graph::printGraphMetaData() {

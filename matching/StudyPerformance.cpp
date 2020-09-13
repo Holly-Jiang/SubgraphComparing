@@ -112,25 +112,20 @@ int main(int argc, char** argv) {
     auto start = std::chrono::high_resolution_clock::now();
     //标签匹配 true 
     Graph* query_graph = new Graph(false);
-        cout<<input_query_graph_file<<" loadGraphFromFile query_graph before "<<endl;
     query_graph->loadGraphFromFile(input_query_graph_file);
         cout<<input_query_graph_file<<" loadGraphFromFile query_graph after "<<endl;
     query_graph->buildCoreTable();
-        cout<<input_query_graph_file<<"buildCoreTable "<<endl;
 
     Graph* data_graph = new Graph(false);
 
     if (input_csr_file_path.empty()) {
-        cout<<input_csr_file_path<<" loadGraphFromFile "<<endl;
         data_graph->loadGraphFromFile(input_data_graph_file);
-        cout<<input_csr_file_path<<" loadGraphFromFile "<<endl;
     }
     else {
         std::string degree_file_path = input_csr_file_path + "_deg.bin";
         std::string edge_file_path = input_csr_file_path + "_adj.bin";
         std::string label_file_path = input_csr_file_path + "_label.bin";
         data_graph->loadGraphFromFileCompressed(degree_file_path, edge_file_path, label_file_path);
-        cout<<degree_file_path<<" loadGraphFromFileCompressed "<<endl;
     }
 
     auto end = std::chrono::high_resolution_clock::now();
