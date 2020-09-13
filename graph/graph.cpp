@@ -155,11 +155,6 @@ void Graph::loadGraphFromFile(const std::string &file_path) {
     for (ui i = 0; i < vertices_count_; ++i) {
         std::sort(neighbors_ + offsets_[i], neighbors_ + offsets_[i + 1]);
     }
-           
-    for (ui i = 0; i < vertices_count_; ++i) {
-        labels_[i]=0;
-        cout<<labels_[i]<<endl;
-    }
     BuildReverseIndex();
 #if OPTIMIZED_LABELED_GRAPH == 1
     if (enable_label_offset_) {
