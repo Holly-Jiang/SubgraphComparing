@@ -13,6 +13,7 @@ using namespace std;
 
 void Graph::BuildReverseIndex() {
     reverse_index_ = new ui[vertices_count_];
+    
     reverse_index_offsets_= new ui[labels_count_ + 1];
     reverse_index_offsets_[0] = 0;
     cout<<"labels_count_ "<<labels_count_<<endl;
@@ -23,11 +24,26 @@ void Graph::BuildReverseIndex() {
         cout<<"reverse_index_offsets_ :"<<reverse_index_offsets_[i + 1]<<endl;
     }
         cout<<"total :"<<total<<endl;
+        
+    for (ui i = 0; i < vertices_count_; ++i) {
+        cout<<reverse_index_[i]<<endl;
+    }
     for (ui i = 0; i < vertices_count_; ++i) {
         LabelID label = labels_[i];
+        cout<<"label "<<label<<endl;
         cout<<"reverse_index_offsets_[label + 1] :"<<reverse_index_offsets_[label + 1]<<endl;
         cout<<"reverse_index_offsets_[label + 1]+1 :"<<reverse_index_offsets_[label + 1]+1<<endl;
+            
+    for (ui i = 0; i < vertices_count_; ++i) {
+        cout<<reverse_index_[i]<<endl;
+    }
+    cout<<"pppppppppppppppppp"<<endl;
         reverse_index_[reverse_index_offsets_[label + 1]++] = i;
+        
+    for (ui i = 0; i < vertices_count_; ++i) {
+        cout<<reverse_index_[i]<<endl;
+    }
+    cout<<"pppppppppppppppppp"<<endl;
         cout<<" reverse_index_[reverse_index_offsets_[label + 1]++] :"<<reverse_index_[reverse_index_offsets_[label + 1]]<<": " <<i<<endl;
         cout<<"reverse_index_offsets_[label + 1]:"<<reverse_index_offsets_[label + 1]<<endl;
     }
