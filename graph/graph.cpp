@@ -27,7 +27,7 @@ void Graph::BuildReverseIndex() {
         LabelID label = labels_[i];
         cout<<"reverse_index_offsets_[label + 1] :"<<reverse_index_offsets_[label + 1]<<endl;
         reverse_index_[reverse_index_offsets_[label + 1]++] = i;
-        cout<<" reverse_index_[reverse_index_offsets_[label + 1]++] :"<<reverse_index_offsets_[label + 1]<<endl;
+        cout<<" reverse_index_[reverse_index_offsets_[label + 1]++] :"<<reverse_index_[reverse_index_offsets_[label + 1]+1]<<endl;
     }
 }
 
@@ -162,8 +162,8 @@ void Graph::loadGraphFromFile(const std::string &file_path) {
         std::sort(neighbors_ + offsets_[i], neighbors_ + offsets_[i + 1]);
     }
 
-    std::cout<<"BuildReverseIndex "<<std::endl;
-    BuildReverseIndex();
+    // std::cout<<"BuildReverseIndex "<<std::endl;
+    // BuildReverseIndex();
 
 #if OPTIMIZED_LABELED_GRAPH == 1
     if (enable_label_offset_) {
@@ -299,10 +299,10 @@ void Graph::loadGraphFromFileCompressed(const std::string &degree_path, const st
     end = std::chrono::high_resolution_clock::now();
     std::cout << "Load label file time: " << std::chrono::duration_cast<std::chrono::seconds>(end - start).count() << " seconds" << std::endl;
 
-    start = std::chrono::high_resolution_clock::now();
-    BuildReverseIndex();
-    end = std::chrono::high_resolution_clock::now();
-    std::cout << "Build reverse index file time: " << std::chrono::duration_cast<std::chrono::seconds>(end - start).count() << " seconds" << std::endl;
+    // start = std::chrono::high_resolution_clock::now();
+    // BuildReverseIndex();
+    // end = std::chrono::high_resolution_clock::now();
+    // std::cout << "Build reverse index file time: " << std::chrono::duration_cast<std::chrono::seconds>(end - start).count() << " seconds" << std::endl;
 #if OPTIMIZED_LABELED_GRAPH == 1
     if (enable_label_offset_) {
         BuildNLF();
