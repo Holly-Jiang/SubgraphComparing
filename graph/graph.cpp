@@ -21,31 +21,10 @@ void Graph::BuildReverseIndex() {
     for (ui i = 0; i < labels_count_; ++i) {
         reverse_index_offsets_[i + 1] = total;
         total += labels_frequency_[i];
-        cout<<"reverse_index_offsets_ :"<<reverse_index_offsets_[i + 1]<<endl;
-    }
-        cout<<"total :"<<total<<endl;
-        
-    for (ui i = 0; i < vertices_count_; ++i) {
-        cout<<reverse_index_[i]<<endl;
     }
     for (ui i = 0; i < vertices_count_; ++i) {
         LabelID label = labels_[i];
-        cout<<"label "<<label<<endl;
-        cout<<"reverse_index_offsets_[label + 1] :"<<reverse_index_offsets_[label + 1]<<endl;
-        cout<<"reverse_index_offsets_[label + 1]+1 :"<<reverse_index_offsets_[label + 1]+1<<endl;
-            
-    for (ui i = 0; i < vertices_count_; ++i) {
-        cout<<reverse_index_[i]<<endl;
-    }
-    cout<<"pppppppppppppppppp"<<endl;
         reverse_index_[reverse_index_offsets_[label + 1]++] = i;
-        
-    for (ui i = 0; i < vertices_count_; ++i) {
-        cout<<reverse_index_[i]<<endl;
-    }
-    cout<<"pppppppppppppppppp"<<endl;
-        cout<<" reverse_index_[reverse_index_offsets_[label + 1]++] :"<<reverse_index_[reverse_index_offsets_[label + 1]]<<": " <<i<<endl;
-        cout<<"reverse_index_offsets_[label + 1]:"<<reverse_index_offsets_[label + 1]<<endl;
     }
 }
 
@@ -121,6 +100,8 @@ void Graph::loadGraphFromFile(const std::string &file_path) {
 
     neighbors_ = new VertexID[edges_count_ * 2];
     labels_ = new LabelID[vertices_count_];
+    cout<<"neighbors_ :"<<neighbors_<<" labels_ : "<<labels_<<endl;
+    cout<<"offsets_ :"<<offsets_<<endl;
     labels_count_ = 0;
     max_degree_ = 0;
 
@@ -195,6 +176,7 @@ void Graph::loadGraphFromFile(const std::string &file_path) {
         // BuildLabelOffset();
     }
 #endif
+    std::cout<<"load file  after"<<std::endl;
 }
 
 void Graph::printGraphMetaData() {

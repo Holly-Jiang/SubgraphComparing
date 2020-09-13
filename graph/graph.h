@@ -75,6 +75,7 @@ public:
     }
 
     ~Graph() {
+        cout<<"delete graph before"<<endl;
         delete[] offsets_;
         delete[] neighbors_;
         delete[] labels_;
@@ -85,6 +86,8 @@ public:
         delete[] labels_offsets_;
         delete[] nlf_;
 #endif
+
+        cout<<"delete graph after"<<endl;
     }
 
 public:
