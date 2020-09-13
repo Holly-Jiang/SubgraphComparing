@@ -179,7 +179,10 @@ void Graph::loadGraphFromFile(const std::string &file_path) {
     for (ui i = 0; i < vertices_count_; ++i) {
         std::sort(neighbors_ + offsets_[i], neighbors_ + offsets_[i + 1]);
     }
-
+           
+    for (ui i = 0; i < vertices_count_; ++i) {
+        cout<<labels_[i]<<endl;
+    }
     std::cout<<"BuildReverseIndex "<<std::endl;
     BuildReverseIndex();
 
