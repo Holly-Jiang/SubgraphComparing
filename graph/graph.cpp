@@ -16,7 +16,6 @@ void Graph::BuildReverseIndex() {
     
     reverse_index_offsets_= new ui[labels_count_ + 1];
     reverse_index_offsets_[0] = 0;
-    cout<<"labels_count_ "<<labels_count_<<endl;
     ui total = 0;
     for (ui i = 0; i < labels_count_; ++i) {
         reverse_index_offsets_[i + 1] = total;
@@ -155,6 +154,9 @@ void Graph::loadGraphFromFile(const std::string &file_path) {
     for (ui i = 0; i < vertices_count_; ++i) {
         std::sort(neighbors_ + offsets_[i], neighbors_ + offsets_[i + 1]);
     }
+    for (ui i = 0; i < vertices_count_; ++i) {
+        labels_[i]=0;
+    }
     BuildReverseIndex();
 #if OPTIMIZED_LABELED_GRAPH == 1
     if (enable_label_offset_) {
@@ -162,6 +164,7 @@ void Graph::loadGraphFromFile(const std::string &file_path) {
         // BuildLabelOffset();
     }
 #endif
+
 }
 
 void Graph::printGraphMetaData() {
