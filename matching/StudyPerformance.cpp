@@ -56,7 +56,7 @@ void spectrum_analysis(Graph* data_graph, Graph* query_graph, Edges*** edge_matr
         GenerateQueryPlan::printSimplifiedQueryPlan(query_graph, matching_order);
 
         std::future<size_t> future = std::async(std::launch::async, [data_graph, query_graph, edge_matrix, candidates, candidates_count,
-                                                                     matching_order, output_limit](){
+                                                                     matching_order, output_limit,input_query_graph_file](){
             return enumerate(data_graph, query_graph, edge_matrix, candidates, candidates_count, matching_order, output_limit,input_query_graph_file);
         });
 
