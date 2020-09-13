@@ -181,7 +181,7 @@ void Graph::loadGraphFromFile(const std::string &file_path) {
     }
            
     for (ui i = 0; i < vertices_count_; ++i) {
-        cout<<labels_[i]<<endl;
+        labels_[i]=0;
     }
     std::cout<<"BuildReverseIndex "<<std::endl;
     BuildReverseIndex();
