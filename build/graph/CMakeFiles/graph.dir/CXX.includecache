@@ -29,6 +29,8 @@ graph/graph.h
 ../utility/graph/graph.h
 
 /root/graph/new/SubgraphComparing/graph/graph.cpp
+iostream
+-
 graph.h
 /root/graph/new/SubgraphComparing/graph/graph.h
 fstream
