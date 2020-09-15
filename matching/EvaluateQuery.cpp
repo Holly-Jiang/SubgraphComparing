@@ -267,7 +267,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
                     ui *candidates_count,
                     ui *order, size_t output_limit_num, size_t &call_count,string filename) {
     
-          
+    cout<<"LFTJ"<<endl;         
 #ifdef DISTRIBUTION
     distribution_count_ = new size_t[data_graph->getVerticesCount()];
     memset(distribution_count_, 0, data_graph->getVerticesCount() * sizeof(size_t));
@@ -331,7 +331,9 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
     exit_ = false;
 #endif
     while (true) {
+                cout<<"true"<<endl;  
         while (idx[cur_depth] < idx_count[cur_depth]) {
+                cout<<"idx[cur_depth] < idx_count[cur_depth]"<<endl;
             ui valid_idx = valid_candidate_idx[cur_depth][idx[cur_depth]];
             VertexID u = order[cur_depth];
             VertexID v = candidates[u][valid_idx];
@@ -343,6 +345,8 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
                 vec_failing_set[cur_depth] |= ancestors[reverse_embedding[v]];
                 vec_failing_set[cur_depth - 1] |= vec_failing_set[cur_depth];
 #endif
+                
+                cout<<"continue"<<endl;  
                 continue;
             }
 
@@ -350,7 +354,10 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
             idx_embedding[u] = valid_idx;
             visited_vertices[v] = true;
             idx[cur_depth] += 1;
+            cout<<"DISTRIBUTION" <<DISTRIBUTION<<endl;
 #ifdef DISTRIBUTION
+
+            cout<<"DISTRIBUTION" <<DISTRIBUTION<<endl;
             begin_count[cur_depth] = embedding_cnt;
             //printf("Cur Depth: %d, v: %u, begin: %zu\n", cur_depth, v, embedding_cnt); 
 	        out<<"t "<<endl;  
@@ -378,7 +385,6 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
                 embedding_cnt += 1;
                 visited_vertices[v] = false;
                 embedding[u] = 99999;
-
 #ifdef DISTRIBUTION
                 distribution_count_[v] += 1;
 #endif
