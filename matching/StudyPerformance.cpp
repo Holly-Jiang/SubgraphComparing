@@ -323,12 +323,10 @@ int main(int argc, char** argv) {
         embedding_count = EvaluateQuery::exploreGraphQLStyle(data_graph, query_graph, candidates, candidates_count,
                                                              matching_order, output_limit, call_count);
     } else if (input_engine_type == "QSI") {
-        cout<<"QSI :"<<endl;
         embedding_count = EvaluateQuery::exploreQuickSIStyle(data_graph, query_graph, candidates, candidates_count,
                                                              matching_order, pivots, output_limit, call_count);
     }
     else if (input_engine_type == "DPiso") {
-        cout<<"DPiso :"<<endl;
         embedding_count = EvaluateQuery::exploreDPisoStyle(data_graph, query_graph, dpiso_tree,
                                                            edge_matrix, candidates, candidates_count,
                                                            weight_array, dpiso_order, output_limit,
