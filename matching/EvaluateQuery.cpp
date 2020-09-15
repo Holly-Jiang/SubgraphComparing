@@ -332,6 +332,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 #endif
     while (true) {
                 cout<<"true"<<endl;  
+                cout<<idx[cur_depth]<<"  "<<idx_count[cur_depth]<<endl;  
         while (idx[cur_depth] < idx_count[cur_depth]) {
                 cout<<"idx[cur_depth] < idx_count[cur_depth]"<<endl;
             ui valid_idx = valid_candidate_idx[cur_depth][idx[cur_depth]];
@@ -414,7 +415,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 #endif
             }
         }
-
+        cout<<" dsdsdsdds 1"<<endl;
 #ifdef SPECTRUM
         if (exit_) {
             goto EXIT;
@@ -438,16 +439,17 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
             }
 #endif
             visited_vertices[embedding[u]] = false;
-            // cout<<"embedding[u]=99999: "<<embedding[u]<<endl;
+            cout<<"embedding[u]=99999: "<<embedding[u]<<endl;
 
 #ifdef DISTRIBUTION
             distribution_count_[embedding[u]] += embedding_cnt - begin_count[cur_depth];
-           // printf("Cur Depth: %d, v: %u, begin: %zu, end: %zu\n", cur_depth, embedding[u], begin_count[cur_depth], embedding_cnt);
+           printf("Cur Depth: %d, v: %u, begin: %zu, end: %zu\n", cur_depth, embedding[u], begin_count[cur_depth], embedding_cnt);
 #endif
             embedding[u]=99999;
         }
 
     }
+        cout<<" dsdsdsdds 3"<<endl;
 
     // Release the buffer.
 #ifdef DISTRIBUTION
@@ -461,6 +463,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 #endif
 
     EXIT:
+        cout<<" dsdsdsdds 2"<<endl;
     out.close();
     out1.close();
     releaseBuffer(max_depth, idx, idx_count, embedding, idx_embedding, temp_buffer, valid_candidate_idx,
