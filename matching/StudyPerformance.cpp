@@ -113,7 +113,6 @@ int main(int argc, char** argv) {
     //标签匹配 true 
     Graph* query_graph = new Graph(false);
     query_graph->loadGraphFromFile(input_query_graph_file);
-        cout<<input_query_graph_file<<" loadGraphFromFile query_graph after "<<endl;
     query_graph->buildCoreTable();
 
     Graph* data_graph = new Graph(false);
@@ -218,8 +217,7 @@ int main(int argc, char** argv) {
     if (input_filter_type != "CECI") {
         memory_cost_in_bytes = BuildTable::computeMemoryCostInBytes(query_graph, candidates_count, edge_matrix);
         BuildTable::printTableCardinality(query_graph, edge_matrix);
-    }
-    else {
+    }else {
         memory_cost_in_bytes = BuildTable::computeMemoryCostInBytes(query_graph, candidates_count, ceci_order, ceci_tree,
                 TE_Candidates, NTE_Candidates);
         BuildTable::printTableCardinality(query_graph, ceci_tree, ceci_order, TE_Candidates, NTE_Candidates);
