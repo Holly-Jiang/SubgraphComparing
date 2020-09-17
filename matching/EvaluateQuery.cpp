@@ -368,11 +368,11 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
             if (cur_depth == max_depth - 1) {
 	    
                 out1<<"t 1"<<endl; 
-                cout1<<"t 1"<<endl; 
+                cout<<"t 1"<<endl; 
             for (int i = 0; i < query_graph->getVerticesCount(); i++)
                 {
                    out1<<i<<" : "<<embedding[i]<<endl;
-                   cout1<<i<<" : "<<embedding[i]<<endl;
+                   cout<<i<<" : "<<embedding[i]<<endl;
                 }
                 out1.flush();
                 embedding_cnt += 1;
