@@ -297,7 +297,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
     idx[cur_depth] = 0;
     idx_count[cur_depth] = candidates_count[start_vertex];
     string out_path;
-    out_path.append("/root/graph/new/quantum_mapping_a_-/pre_ini_qx3/");
+    out_path.append("/root/graph/new/quantum_mapping_a_-/pre_ini_qx20/");
     out_path.append(filename.substr(filename.find_last_of("/")+1));
     cout<<out_path<<endl;
     std::ofstream out(out_path);  
@@ -313,6 +313,14 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
                 cout<<"file open fails!: "<<out.is_open()<<endl;
                 exit(-1);
             }
+       out<<"t 0"<<endl;  
+            cout<<"t 0"<<endl; 
+            for (int i = 0; i < query_graph->getVerticesCount(); i++)
+                {
+                   out<<i<<" : "<<99999<<endl;
+                   cout<<i<<" : "<<99999<<endl;
+                }
+            out.flush();
     for (ui i = 0; i < idx_count[cur_depth]; ++i) {
         valid_candidate_idx[cur_depth][i] = i;
     }
