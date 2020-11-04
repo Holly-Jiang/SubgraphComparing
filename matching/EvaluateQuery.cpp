@@ -125,11 +125,11 @@ EvaluateQuery::exploreGraph(const Graph *data_graph, const Graph *query_graph, E
             idx[cur_depth] += 1;
 
             if (cur_depth == max_depth - 1) {
-                cout<<"embedding_cnt:"<<embedding_cnt<<endl;
-                for (int i = 0; i < max_depth; i++)
-                {
-                    cout<<i<<" : "<<embedding[i]<<endl;
-                }
+                // cout<<"embedding_cnt:"<<embedding_cnt<<endl;
+                // for (int i = 0; i < max_depth; i++)
+                // {
+                //     cout<<i<<" : "<<embedding[i]<<endl;
+                // }
                 embedding_cnt += 1;
                 visited_vertices[v] = false;
                 if (embedding_cnt >= output_limit_num) {
@@ -314,11 +314,11 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
                 exit(-1);
             }
        out<<"t 0"<<endl;  
-            cout<<"t 0"<<endl; 
+            // cout<<"t 0"<<endl; 
             for (int i = 0; i < query_graph->getVerticesCount(); i++)
                 {
                    out<<i<<" : "<<99999<<endl;
-                   cout<<i<<" : "<<99999<<endl;
+                //    cout<<i<<" : "<<99999<<endl;
                 }
             out.flush();
     for (ui i = 0; i < idx_count[cur_depth]; ++i) {
@@ -375,14 +375,14 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 
             if (cur_depth == max_depth - 1) {
 	    
-                out1<<"t 1"<<endl; 
+                out<<"t 1"<<endl; 
                 // cout<<"t 1"<<endl; 
             for (int i = 0; i < query_graph->getVerticesCount(); i++)
                 {
-                   out1<<i<<" : "<<embedding[i]<<endl;
+                   out<<i<<" : "<<embedding[i]<<endl;
                 //    cout<<i<<" : "<<embedding[i]<<endl;
                 }
-                out1.flush();
+                out.flush();
                 embedding_cnt += 1;
                 visited_vertices[v] = false;
                 embedding[u] = 99999;
