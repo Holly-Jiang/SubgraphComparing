@@ -301,13 +301,13 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
     out_path.append(filename.substr(filename.find_last_of("/")+1));
     cout<<out_path<<endl;
     std::ofstream out(out_path);  
-    std::ofstream out1("/root/graph/new/SubgraphComparing/build/matching/result.dat");
+    // std::ofstream out1("/root/graph/new/SubgraphComparing/build/matching/result.dat");
 
-        if (!out1.is_open())
-            {
-                cout<<"file open fails!: "<<out1.is_open()<<endl;
-                exit(-1);
-            }
+        // if (!out1.is_open())
+        //     {
+        //         cout<<"file open fails!: "<<out1.is_open()<<endl;
+        //         exit(-1);
+        //     }
         if (!out.is_open())
             {
                 cout<<"file open fails!: "<<out.is_open()<<endl;
@@ -465,7 +465,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
 
     EXIT:
     out.close();
-    out1.close();
+    // out1.close();
     releaseBuffer(max_depth, idx, idx_count, embedding, idx_embedding, temp_buffer, valid_candidate_idx,
                   visited_vertices,
                   bn, bn_count);
@@ -485,7 +485,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
     delete[] qfliter_bsr_graph_;
 #endif
     out.close();
-    out1.close();
+    // out1.close();
     return embedding_cnt;
 }
 
