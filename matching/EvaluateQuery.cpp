@@ -310,7 +310,7 @@ EvaluateQuery::LFTJ(const Graph *data_graph, const Graph *query_graph, Edges ***
         //     }
         if (!out.is_open())
             {
-                cout<<"file open fails!:11 "<<out.is_open()<<endl;
+                cout<<"file open fails:11 "<<out.is_open()<<endl;
                 exit(-1);
             }
        out<<"t 0"<<endl;  
